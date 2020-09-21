@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ABM-Empleados"
+    }
+  },
+  "defaultProject": "ABM-Empleados",
+  "cli": {
+    "analytics": "d56c4dd9-bc7f-4b7c-9968-d78f29325750"
+  }
 }
