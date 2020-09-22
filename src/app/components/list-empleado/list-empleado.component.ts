@@ -6,7 +6,7 @@ import { EmpleadoService } from '../../services/empleado.service';
 import { Empleado } from '../../models/empleado';
 import { MatDialog } from '@angular/material/dialog';
 import { MjeConfirmacionComponent } from '../shared/mje-confirmacion/mje-confirmacion.component';
-import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-list-empleado',
@@ -62,17 +62,14 @@ export class ListEmpleadoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if(result === 'aceptar'){
+      if (result === 'aceptar') {
         this.empleadoService.deleteEmpleado(index);
         this.snackBar.open('El empleado ha sido eliminado correctamente', '', {
-          duration: 3000
-        })
+          duration: 3000,
+        });
         this.cargarEmpleados();
-    }
+      }
     });
   }
 
-  editarEmpleado(index: number) {
-    this.empleadoService.deleteEmpleado(index);
-  }
 }

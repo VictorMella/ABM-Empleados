@@ -70,7 +70,19 @@ export class EmpleadoService {
     return this.lsEmpleados.slice();
   }
 
-  deleteEmpleado(index: number){
-    this.lsEmpleados.splice(index, 1)
+  deleteEmpleado(index: number) {
+    this.lsEmpleados.splice(index, 1);
+  }
+
+  agregarEmpleado(objEmpleado: Empleado) {
+    this.lsEmpleados.unshift(objEmpleado);
+  }
+
+  getEmpleado(index: number){
+    return this.lsEmpleados[index];
+  }
+
+  editempleado(empleado: Empleado, index: number){
+   this.lsEmpleados[index] = empleado;
   }
 }

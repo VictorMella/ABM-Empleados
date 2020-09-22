@@ -1,7 +1,17 @@
-img{
+    
+img{  
     width: 95%;
     height: 95%;
+
 }
+
+@media (max-width: 425px) {
+    img{  
+     margin-top: 15px;
+     position: 0;
+    
+    }
+  }
 
 .example-container{
     width: 100%;
@@ -14,3 +24,8 @@ img{
     background-color: #f44336;
     border-color: #f44336;
 }
+
+.mda-form-msg{
+    color: #f44336;
+}
+

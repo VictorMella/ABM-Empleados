@@ -12,3 +12,13 @@ table {
 button:focus{
     outline: none;
 }
+
+@media (max-width: 425px) {
+    .header{  
+         display: none;
+    
+    }
+    .fila{
+        width: 100%;
+    }
+  }

@@ -1,62 +1,94 @@
 <div class="row">
     <div class="col-lg-6">
-        <h2>Agregar Empleado</h2>
+        <h2>{{accion}} Empleado</h2>
     </div>
 </div>
-<pre> {{myForm.value| json}}  </pre>
 <div class="row">
     <div class="col-lg-4">
         <form [formGroup]="myForm">
             <div class="col-lg-12">
                 <mat-form-field class="example-container">
-                    <mat-label>Nombre Completo</mat-label>
-                    <input matInput>
+                    <mat-label>Nombre Completo </mat-label>
+                    <input matInput formControlName="nombreCompleto">
                 </mat-form-field>
+                <div *ngIf="myForm.get('nombreCompleto').hasError('required') && myForm.get('nombreCompleto').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">Este es un campo <strong>requerido</strong></span>
+                </div>
+                <div *ngIf="myForm.get('nombreCompleto').hasError('maxlength') && myForm.get('nombreCompleto').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">El campo debe tener un máximo de <strong>30 caracteres</strong></span>
+                </div>
             </div>
+
             <div class="col-lg-12">
                 <mat-form-field class="example-container">
                     <mat-label>Correo</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="correo">
                 </mat-form-field>
+                <div *ngIf="myForm.get('correo').hasError('required') && myForm.get('correo').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">Este es un campo <strong>requerido</strong></span>
+                </div>
+                <div *ngIf="myForm.get('correo').hasError('email') && myForm.get('correo').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">El formato del correo no es válido </span>
+                </div>
             </div>
-            <br>
             <br>
 
             <div class="col-lg-12">
                 <mat-form-field class="example-full-width" class="example-container">
                     <mat-label>Fecha de ingreso</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" formControlName="fechaIngreso">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker touchUi #picker></mat-datepicker>
-                  </mat-form-field>
+                </mat-form-field>
+                <div *ngIf="myForm.get('fechaIngreso').hasError('required') && myForm.get('fechaIngreso').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">El formato de la fecha no es válido</span>
+                </div>
             </div>
             <div class="col-lg-12">
                 <mat-form-field class="example-container">
                     <mat-label>Teléfono</mat-label>
-                    <input matInput>
+                    <input matInput formControlName="telefono">
                 </mat-form-field>
+                <div *ngIf="myForm.get('telefono').hasError('required') && myForm.get('telefono').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">Este es un campo <strong>requerido</strong></span>
+                </div>
+          
             </div>
             <div class="col-lg-12">
                 <mat-form-field class="example-container">
                     <mat-label>Estado civil</mat-label>
-                    <mat-select>
-                      <mat-option *ngFor="let estadoCivil of estadosCiviles" [value]="estadoCivil">
-                        {{estadoCivil}}
-                      </mat-option>
+                    <mat-select formControlName="estadoCivil">
+                        <mat-option *ngFor="let estadoCivil of estadosCiviles" [value]="estadoCivil">
+                            {{estadoCivil}}
+                        </mat-option>
                     </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
+                <div *ngIf="myForm.get('estadoCivil').hasError('required') && myForm.get('estadoCivil').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">Este es un campo <strong>requerido</strong></span>
+                </div>
             </div>
-            <div class="col-lg-12">
-                <mat-radio-group aria-label="Seleccione estado civil" class="example-container">
+            <div class="col-lg-12" style="margin-top: 10px;">
+                <mat-radio-group aria-label="Seleccione sexo empleado" class="example-container" formControlName="sexo">
                     <mat-radio-button value="Femenino" style="margin-right: 10px;">Femenino</mat-radio-button>
                     <mat-radio-button value="Masculino">Masculino</mat-radio-button>
-                  </mat-radio-group>
+                </mat-radio-group>
+                <div *ngIf="myForm.get('sexo').hasError('required') && myForm.get('sexo').touched"
+                    style="margin-top: -20px;">
+                    <span class="mda-form-msg">Este es un campo <strong>requerido</strong></span>
+                </div>
             </div>
             <br>
-            <br>
-            <div class="col-lg-12">
-                <button class=" btn btn-success btn-lg float-right"  style="margin-left: 10px;" routerLink="/">Aceptar</button>
-                <button class="btn btn-secondary btn-lg float-right">Cancelar</button>
+            <div class="col-lg-12" style="margin-top: 10px;">
+                <button class=" btn btn-success btn-lg float-right" style="margin-left: 10px;"
+                    (click)="guardarEmpleado()" [disabled]="myForm.invalid">Aceptar</button>
+                <button class="btn btn-secondary btn-lg float-right" [routerLink]="['/']" >Cancelar</button>
             </div>
         </form>
     </div>
