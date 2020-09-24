@@ -8,17 +8,57 @@ table {
 }
 .pointer{
     cursor: pointer;
+    margin-left: 15px;
+    font-size: 20px;
 }
 button:focus{
     outline: none;
 }
 
-@media (max-width: 425px) {
-    .header{  
-         display: none;
-    
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  
+  .mobile-label {
+    display: none;
+  }
+  
+  @media(max-width: 500px) {
+    mat-cell:first-of-type{
+      padding-left: 0px !important
     }
-    .fila{
-        width: 100%;
+    .mobile-label {      
+      width: 100px;
+      padding-right: 10px;
+      display: inline-block;
+          font-weight: bold;
+    }
+    
+  
+    .mat-header-row {
+      display: none;
+    }
+  
+    .mat-row { 
+      flex-direction: column;
+      align-items: start;
+      padding: 8px 24px;
+    }
+
+    .title{
+      text-align: center;
+    }
+
+    .add{
+      width: 100%;
     }
   }
+  

@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-lg-6">
-        <h2>
+        <h2 class="title">
             Listado de Empleados
-        </h2>      
+        </h2>
     </div>
-    <div class="col-lg-6" style="text-align: right;">
-        <button mat-raised-button color ="warn" routerLink="/add" >Agregar</button>
-        </div>
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="text-align: right;">
+        <button mat-raised-button color="warn" class ="add" routerLink="/add">Agregar</button>
+    </div>
 </div>
 
 <mat-form-field>
@@ -18,48 +18,62 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
     <ng-container matColumnDef="nombreCompleto">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </mat-header-cell>
+        <mat-cell mat-cell *matCellDef="let element">
+            <span class="mobile-label">Nombre Completo </span>
+            {{element.nombreCompleto}}
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="correo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
-        <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Correo </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Correo </span>
+            {{element.correo}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="estadoCivil">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado Civil </th>
-        <td mat-cell *matCellDef="let element"> {{element.estadoCivil}} </td>
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado Civil </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Estado Civil </span>
+            {{element.estadoCivil}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="fechaIngreso">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de ingreso </th>
-        <td mat-cell *matCellDef="let element"> {{element.fechaIngreso | date:'dd/MM/yyyy'}} </td>
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de ingreso </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Fecha de ingreso </span>
+            {{element.fechaIngreso | date:'dd/MM/yyyy'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sexo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </th>
-        <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Sexo</span>
+            {{element.sexo}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="telefono">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-        <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Teléfono </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <span class="mobile-label">Teléfono</span>
+            {{element.telefono}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element; let i = index">
-            <a routerLink="edit/{{i}}"  class="pointer" style="color: #1878B0" >
+        <mat-header-cell mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+        <mat-cell *matCellDef="let element; let i = index">
+            <span class="mobile-label">Acciones</span>
+            <a routerLink="edit/{{i}}" class="pointer" style="color: #1878B0">
                 <mat-icon>edit</mat-icon>
             </a>
             <a (click)="eliminarEmpleado(i)" class="pointer" style="color: #E15639">
                 <mat-icon>delete</mat-icon>
             </a>
-        </td>
+        </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="header"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
